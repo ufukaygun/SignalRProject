@@ -10,10 +10,10 @@ namespace SignalR.DataAccessLayer.Concrete
 {
     public class SignalRContext : DbContext
     {
-        //Bağlantı sınıfı yapıldı.
+        //Context sınıfı oluşturuldu.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-URRDALT;initial Catalog=SignalRDb;integrated Security=true");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-URRDALT;initial Catalog=SignalRDb;integrated Security=true;TrustServerCertificate=True;");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
