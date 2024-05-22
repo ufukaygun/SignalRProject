@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SignalR.EntityLayer.Entities
+namespace SignalR.DtoLayer.SocialMediaDto
 {
-    public class SocialMedia
+    public class UpdateSocialMediaDto
     {
         public int SocialMediaID { get; set; }
         public string Title { get; set; }
