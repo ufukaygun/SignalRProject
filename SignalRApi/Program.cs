@@ -14,6 +14,7 @@ namespace SignalRApi
         {
             var builder = WebApplication.CreateBuilder(args);
             //Apinin test kýsmý
+            //Registration
             builder.Services.AddDbContext<SignalRContext>();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -29,9 +30,24 @@ namespace SignalRApi
             builder.Services.AddScoped<IContactService, ContactManager>();
             builder.Services.AddScoped<IContactDAL, EfContactDal>();
 
-
             builder.Services.AddScoped<IDiscountService, DiscountManager>();
             builder.Services.AddScoped<IDiscountDAL, EfDiscountDal>();
+
+
+            builder.Services.AddScoped<IFeatureService, FeatureManager>();
+            builder.Services.AddScoped<IFeatureDAL, EfFeatureDal>();
+
+
+            builder.Services.AddScoped<IProductService, ProductManager>();
+            builder.Services.AddScoped<IProductDAL, EfProductDal>();
+
+
+            builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+            builder.Services.AddScoped<ISocialMediaDAL, EfSocialMediaDal>();
+
+
+            builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+            builder.Services.AddScoped<ITestimonialDAL, EfTestimonialDal>();
 
 
             // Add services to the container.
