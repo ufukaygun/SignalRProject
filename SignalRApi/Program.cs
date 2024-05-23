@@ -14,8 +14,14 @@ namespace SignalRApi
             var builder = WebApplication.CreateBuilder(args);
             //Apinin test kýsmý
             builder.Services.AddDbContext<SignalRContext>();
+
             builder.Services.AddScoped<IAboutService, AboutManager>();
             builder.Services.AddScoped<IAboutDAL, EfAboutDal>();
+
+            builder.Services.AddScoped<IBookingService, BookingManager>();
+            builder.Services.AddScoped<IBookingDAL, EfBookingDal>();
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
