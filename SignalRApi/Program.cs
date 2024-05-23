@@ -26,6 +26,13 @@ namespace SignalRApi
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
             builder.Services.AddScoped<ICategoryDAL, EfCategoryDal>();
 
+            builder.Services.AddScoped<IContactService, ContactManager>();
+            builder.Services.AddScoped<IContactDAL, EfContactDal>();
+
+
+            builder.Services.AddScoped<IDiscountService, DiscountManager>();
+            builder.Services.AddScoped<IDiscountDAL, EfDiscountDal>();
+
 
             // Add services to the container.
 
