@@ -20,8 +20,8 @@ namespace SignalRApi.Controllers
         //Rezervasyon Alanı
         public IActionResult BookingList() 
         {
-            var values  = _bookingService.TGetAll();
-            return Ok(values);
+            var value  = _bookingService.TGetAll();
+            return Ok(value);
         }
         [HttpPost]
         public IActionResult CreateBooking(CreateBookingDto createBookingDto) 
