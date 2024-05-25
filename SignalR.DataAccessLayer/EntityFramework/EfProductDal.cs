@@ -2,6 +2,7 @@
 using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.Repositories;
+using SignalR.DtoLayer.ProductDto;
 using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
