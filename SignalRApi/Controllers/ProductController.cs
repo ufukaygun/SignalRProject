@@ -55,7 +55,8 @@ namespace SignalRApi.Controllers
                 ImageUrl = createProductDto.ImageUrl,
                 Price = createProductDto.Price,
                 ProductName = createProductDto.ProductName,
-                ProductStatus = createProductDto.ProductStatus
+                ProductStatus = createProductDto.ProductStatus,
+                CategoryID = createProductDto.CategoryID
             });
             return Ok("Ürün Bilgisi Eklendi");
         }
