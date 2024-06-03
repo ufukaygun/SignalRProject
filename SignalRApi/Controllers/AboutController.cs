@@ -35,7 +35,7 @@ namespace SignalRApi.Controllers
             _aboutService.TAdd(about);
             return Ok("Hakkımda Kısmı Başarılı Bir Şekilde Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var value = _aboutService.TGetByID(id);
@@ -58,7 +58,7 @@ namespace SignalRApi.Controllers
         }
         //id ye göre getirme işlemi
         //Api de aynı Atribute aynı formatta birden fazla kullanılırsa hata verir.Hata vermemesi için içine isim yazıyoruz.
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var value = _aboutService.TGetByID(id);
