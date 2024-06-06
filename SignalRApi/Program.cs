@@ -13,6 +13,23 @@ namespace SignalRApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Cors metdonu çaðýrdýk.
+            builder.Services.AddCors(opt =>
+            {
+                //Cors politikasý ekledik
+                opt.AddPolicy("CorsPolicy", builder => //Anonim bir deðer ekledik builder
+                {
+                    //Kaynaklara izin verildi
+                    builder.AllowAnyHeader() //Herhangi bir baþlýða izin ver
+                    .AllowAnyMethod() //gelen herhangi bir metoda izin ver
+                    .SetIsOriginAllowed((host) => true) //Gelen herhangi bir kaynaða izin ver
+                    .AllowCredentials(); //Gelen herhangi bir kimliðe izin ver
+                });
+            
+            });
+            builder.Services.AddSignalR(); //SignalR kütüphanesinide eklemiþ olduk.
+
             //Apinin test kýsmý
             //Registration
             builder.Services.AddDbContext<SignalRContext>();
@@ -65,6 +82,8 @@ namespace SignalRApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("CorsPolicy"); //Yukarýdaki tanýmladýðýmýz keyi burada çaðýrdýk.
 
             app.UseHttpsRedirection();
 
