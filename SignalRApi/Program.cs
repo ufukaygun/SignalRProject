@@ -4,6 +4,7 @@ using SignalR.BusinessLayer.Concrete;
 using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.EntityFramework;
+using SignalRApi.Hubs;
 using System.Reflection;
 
 namespace SignalRApi
@@ -91,6 +92,12 @@ namespace SignalRApi
 
 
             app.MapControllers();
+
+			//Cors yazýldýktan sonra bir endpoint yazmamýz gerekiyor.
+			//Anlamý
+			//örneðin localhost://1234/category/index 1234 den sonra istekte bulunmak istediðimiz yer aslýnda signalRhub
+			//örneðin localhost://1234/signalRhub bu þekilde istekte bulunmuþ olucaz
+			app.MapHub<SignalRHub>("/signalrhub");
 
             app.Run();
         }
