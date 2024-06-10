@@ -26,12 +26,11 @@
                                 @*Connection(bağlantı) başlatma kısmı*@
                                     connection.start().then(() => {
                                         $("#connstatus").text(connection.state);
+                                    connection.invoke("SendCategoryCount");
                                     }).catch((err) => { console.log(err) });
 
-                                connection.invoke("SendCategoryCount");
-
                                 connection.on("ReceiveCategoryCount", (value) => {
-
+                                    $("#categorycount").text(value);
                                 });
 
                             });

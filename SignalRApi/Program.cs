@@ -6,6 +6,7 @@ using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.EntityFramework;
 using SignalRApi.Hubs;
 using System.Reflection;
+using AutoMapper;
 
 namespace SignalRApi
 {

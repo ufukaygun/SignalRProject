@@ -7,14 +7,20 @@ namespace SignalRApi.Hubs
 	//Hub sınıfı aracılığıyla biz uygulamamızın servera olan kısmını tanıtmış olduk.
 	public class SignalRHub : Hub
 	{
-		SignalRContext context = new SignalRContext();
-        private CancellationToken value;
+        private readonly SignalRContext _context;
+
+        public SignalRHub(SignalRContext context)
+        {
+            _context = context;
+        }
 
         public async Task SendCategoryCount()
-		{
-			var vaşue = context.Categories.Count();
-			//Bu metod ile gelen değeri client tarafına göndericez
-			await Clients.All.SendAsync("ReceiveCategoryCount", value);
-		}
-	}
+        {
+            // Kategorilerin sayısını alıyoruz
+            var value = _context.Categories.Count();
+
+            // Bu metot ile gelen değeri client tarafına gönderiyoruz
+            await Clients.All.SendAsync("ReceiveCategoryCount", value);
+        }
+    }
 }
