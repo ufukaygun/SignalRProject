@@ -24,10 +24,17 @@
                                 $("#connstatus").text(connection.state);
 
                                 @*Connection(bağlantı) başlatma kısmı*@
-                                connection.start().then(() => {
-                                    $("#connstatus").text(connection.state);
-                                }).catch((err) => { console.log(err) });
-                            })
+                                    connection.start().then(() => {
+                                        $("#connstatus").text(connection.state);
+                                    }).catch((err) => { console.log(err) });
+
+                                connection.invoke("SendCategoryCount");
+
+                                connection.on("ReceiveCategoryCount", (value) => {
+
+                                });
+
+                            });
                         </script>
                     </div>
                 </div>
@@ -38,5 +45,6 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="alert alert-success">Bağlantının durumu:<strong id="connstatus"></strong></div>
+        <div class="alert alert-info">Kategori Sayısı:<strong id="categorycount"></strong></div>
     </div>
 </div>
