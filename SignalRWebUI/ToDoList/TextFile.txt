@@ -1,4 +1,11 @@
-﻿--CategoryCount Consume Edilecek
+﻿-----Yapılacak İstatistikler------  
+
+--Bunun için önce DAL katmanında => Abstract klasörüne => EntityFramework Klasörüne => Busines Katmanı(burada çağırıyoruz) => Abstract Klasörü => Concrete Klasörü => SignalRApi Katmanı => Controller Klasörü
+
+--CategoryCount Consume Edilecek
 --ProductCount
 --Aktif Kategori Sayısı
 --Pasif Kategori Sayısı
+
+--Kategori Adına göre ürün sayısı
+--Kategori Adına göre ürün sayısı2
