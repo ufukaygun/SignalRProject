@@ -59,6 +59,11 @@ namespace SignalRApi.Controllers
         {
             return Ok(_productService.TProducNametByMinPrice());
         }
+        [HttpGet("ProductAvgPriceByHamburger")]
+        public IActionResult ProductAvgPriceByHamburger()
+        {
+            return Ok(_productService.TProductAvgPriceByHamburger());
+        }
         [HttpGet("ProducListtWithCategory")]
         public IActionResult ProducListtWithCategory() 
         {
