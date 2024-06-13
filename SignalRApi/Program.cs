@@ -68,6 +68,12 @@ namespace SignalRApi
             builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
             builder.Services.AddScoped<ITestimonialDAL, EfTestimonialDal>();
 
+            builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+            builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
+
+            builder.Services.AddScoped<IOrderService, OrderManager>();
+            builder.Services.AddScoped<IOrderDal, EfOrderDal>();
+
 
             // Add services to the container.
 
