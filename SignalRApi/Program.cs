@@ -74,6 +74,9 @@ namespace SignalRApi
             builder.Services.AddScoped<IOrderService, OrderManager>();
             builder.Services.AddScoped<IOrderDal, EfOrderDal>();
 
+            builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
+            builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
+
 
             // Add services to the container.
 
