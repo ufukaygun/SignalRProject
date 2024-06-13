@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SignalR.EntityLayer.Entities
 {
-    internal class MoneyCase
+    public class MoneyCase
     {
+        public int MoneyCaseID { get; set; }
+        public decimal TotalAmount { get; set; }
     }
 }
