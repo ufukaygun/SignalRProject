@@ -22,3 +22,18 @@ Declare @OrderPrice decimal
 select @OrderID=OrderID From deleted
 Select @OrderPrice=TotalPrice from deleted
 Update Orders Set TotalPrice =TotalPrice - @OrderPrice where OrderID = @OrderID
+
+---Kasadaki Toplam Trigger------
+
+Create Trigger SumMoneyCases
+On Orders
+After Update
+As
+Declare @Aciklama Nvarchar(Max)
+Declare @TotalPrice Decimal(18,2)
+Select @Aciklama = Aciklama From inserted
+Select @TotalPrice = TotalPrice From inserted
+if(@Aciklama = 'Hesap Kapatıldı')
+Begin
+Update MoneyCases Set TotalAmount = TotalAmount + @TotalPrice 
+End
