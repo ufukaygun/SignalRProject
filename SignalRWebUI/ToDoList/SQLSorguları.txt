@@ -1,0 +1,11 @@
+﻿-------Sipariş Detayına Göre Sipariş Tutarı Arttıran Trigger-----
+
+Create Trigger IncreaseOrderTotalPrice
+on OrderDetails
+After Insert
+As
+Declare @OrderID int
+Declare @OrderPrice decimal
+select @OrderID=OrderID From inserted
+Select @OrderPrice=TotalPrice from inserted
+Update Orders Set TotalPrice =TotalPrice + @OrderPrice where OrderID = @OrderID
