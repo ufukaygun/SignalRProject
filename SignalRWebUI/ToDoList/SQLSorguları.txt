@@ -9,3 +9,16 @@ Declare @OrderPrice decimal
 select @OrderID=OrderID From inserted
 Select @OrderPrice=TotalPrice from inserted
 Update Orders Set TotalPrice =TotalPrice + @OrderPrice where OrderID = @OrderID
+
+
+------Sipariş Detayına Göre Sipariş Tutarı Azaltan Trigger-----
+
+ALTER Trigger [dbo].[DecreaseOrderTotalPrice]
+on [dbo].[OrderDetails]
+After Delete
+As
+Declare @OrderID int
+Declare @OrderPrice decimal
+select @OrderID=OrderID From deleted
+Select @OrderPrice=TotalPrice from deleted
+Update Orders Set TotalPrice =TotalPrice - @OrderPrice where OrderID = @OrderID
