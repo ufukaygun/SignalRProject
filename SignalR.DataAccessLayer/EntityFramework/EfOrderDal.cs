@@ -15,5 +15,17 @@ namespace SignalR.DataAccessLayer.EntityFramework
         public EfOrderDal(SignalRContext context) : base(context)
         {
         }
+
+        public int ActiveOrderCount()
+        {
+            using var context = new SignalRContext();
+            return context.Orders.Where(x => x.Aciklama == "Müşteri Masada").Count();
+        }
+
+        public int TotalOrderCount()
+        {
+            using var context = new SignalRContext();
+            return context.Orders.Count();
+        }
     }
 }
