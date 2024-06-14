@@ -4,8 +4,41 @@
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
     <div class="content">
         <div class="container-fluid">
+
+
+        <script type="text/javascript">
+
+            $(document).ready(() => {
+            @*Web Socket*@
+                                        var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:5205/SignalRHub").build();
+                $("#connstatus").text(connection.state);
+
+            @*Connection(bağlantı) başlatma kısmı*@
+                    connection.start().then(() => {
+                        $("#connstatus").text(connection.state);
+            @*SetInterval Tetikleyici görevi görüyor*@
+                            setInterval(() => {
+                                connection.invoke("SendCategoryCount");
+                            }, 1000);
+
+                    }).catch((err) => { console.log(err) });
+
+                connection.on("ReceiveCategoryCount", (value) => {
+                    $("#categorycount").text(value);
+                });
+
+            });
+
+        </script>
+
+
             <h4 class="page-title">Dashboard</h4>
             <div class="row">
                 <div class="col-md-3">
@@ -20,7 +53,7 @@
                                 <div class="col-7 d-flex align-items-center">
                                     <div class="numbers">
                                         <p class="card-category">Visitors</p>
-                                        <h4 class="card-title">1,294</h4>
+                                        <h4 class="card-title" id="categorycount"></h4>
                                     </div>
                                 </div>
                             </div>
