@@ -17,7 +17,7 @@
 
             $(document).ready(() => {
             @*Web Socket*@
-                                        var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:5205/SignalRHub").build();
+                var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:5205/SignalRHub").build();
                 $("#connstatus").text(connection.state);
 
             @*Connection(bağlantı) başlatma kısmı*@
@@ -26,6 +26,7 @@
             @*SetInterval Tetikleyici görevi görüyor*@
                             setInterval(() => {
                                 connection.invoke("SendCategoryCount");
+                                connection.invoke("SendProductCount");
                             }, 1000);
 
                     }).catch((err) => { console.log(err) });
@@ -33,13 +34,16 @@
                 connection.on("ReceiveCategoryCount", (value) => {
                     $("#categorycount").text(value);
                 });
+                connection.on("ReceiveProductCount", (value2) => {
+                    $("#productcount").text(value2);
+                });
 
             });
 
         </script>
 
 
-            <h4 class="page-title">Dashboard</h4>
+            <h4 class="page-title">Anlık İstatistik Sayfası</h4>
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-stats card-warning">
@@ -47,12 +51,12 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div class="icon-big text-center">
-                                        <i class="la la-users"></i>
+                                        <i class="la la-certificate"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex align-items-center">
                                     <div class="numbers">
-                                        <p class="card-category">Visitors</p>
+                                        <p class="card-category">Kategori Sayısı</p>
                                         <h4 class="card-title" id="categorycount"></h4>
                                     </div>
                                 </div>
@@ -66,13 +70,13 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div class="icon-big text-center">
-                                        <i class="la la-bar-chart"></i>
+                                        <i class="la la-shopping-cart"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex align-items-center">
                                     <div class="numbers">
-                                        <p class="card-category">Sales</p>
-                                        <h4 class="card-title">$ 1,345</h4>
+                                        <p class="card-category">Ürün Sayısı</p>
+                                    <h4 class="card-title" id="productcount"></h4>
                                     </div>
                                 </div>
                             </div>

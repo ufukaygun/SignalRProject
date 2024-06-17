@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 
 namespace SignalRApi.Hubs
@@ -7,20 +8,27 @@ namespace SignalRApi.Hubs
 	//Hub sınıfı aracılığıyla biz uygulamamızın servera olan kısmını tanıtmış olduk.
 	public class SignalRHub : Hub
 	{
-        private readonly SignalRContext _context;
-
-        public SignalRHub(SignalRContext context)
+        //Servisler yazıldı
+        private readonly ICategoryService _categoryService;
+        private readonly IProductService _productService;
+        public SignalRHub(ICategoryService categoryService, IProductService productService)
         {
-            _context = context;
+            _categoryService = categoryService;
+            _productService = productService;
         }
 
         public async Task SendCategoryCount()
         {
             // Kategorilerin sayısını alıyoruz
-            var value = _context.Categories.Count();
+            var value = _categoryService.TCategoryCount();
 
             // Bu metot ile gelen değeri client tarafına gönderiyoruz
             await Clients.All.SendAsync("ReceiveCategoryCount", value);
+        }
+        public async Task SendProductCount()
+        {
+            var value2 = _productService.TProductCount();
+            await Clients.All.SendAsync("ReceiveProductCount", value2);
         }
     }
 }
