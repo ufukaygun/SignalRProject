@@ -11,10 +11,14 @@ namespace SignalRApi.Hubs
         //Servisler yazıldı
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
-        public SignalRHub(ICategoryService categoryService, IProductService productService)
+        private readonly IOrderService _orderService;
+
+
+        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService)
         {
             _categoryService = categoryService;
             _productService = productService;
+            _orderService = orderService;
         }
 
         public async Task SendStatistic()
@@ -45,6 +49,18 @@ namespace SignalRApi.Hubs
 
             var value8 = _productService.TProducNametByMaxPrice();
             await Clients.All.SendAsync("ReceiveProducNametByMaxPrice", value8);
+
+            var value9 = _productService.TProducNametByMinPrice();
+            await Clients.All.SendAsync("ReceiveProducNametByMinPrice", value9);
+
+            var value10 = _productService.TProductAvgPriceByHamburger();
+            await Clients.All.SendAsync("ReceiveProductAvgPriceByHamburger", value10.ToString("0.00") + "₺");
+
+            var value11 = _orderService.TTotalOrderCount();
+            await Clients.All.SendAsync("ReceiveTotalOrderCount", value11);
+
+            var value12 = _orderService.TActiveOrderCount();
+            await Clients.All.SendAsync("ReceiveActiveOrderCount", value12);
         }
        
     }
