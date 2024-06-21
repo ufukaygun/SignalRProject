@@ -3,6 +3,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
+@await Component.InvokeAsync("_DefaultSliderComponentPartial")
 
-<h1>Index</h1>
-
+@await Component.InvokeAsync("_DefaultOfferComponentPartial")
