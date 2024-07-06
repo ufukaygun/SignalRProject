@@ -80,6 +80,9 @@ namespace SignalRApi
             builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
             builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
 
+            builder.Services.AddScoped<ISliderService, SliderManager>();
+            builder.Services.AddScoped<ISliderDAL, EfSliderDal>();
+
 
             // Add services to the container.
 
