@@ -1,11 +1,13 @@
-﻿<section class="client_section layout_padding-bottom">
+﻿@model List<ResultTestimonialDto>
+<section class="client_section layout_padding-bottom">
+
     <div class="container">
         <div class="heading_container heading_center psudo_white_primary mb_45">
             <h2>
-                Misafirlerimiz Bizim İçin Ne Dediler?
+                What Says Our Customers
             </h2>
         </div>
-        <div class="carousel-wrap row">
+        <div class="carousel-wrap row ">
             <div class="owl-carousel client_owl-carousel">
                 <div class="item">
                     <div class="box">
@@ -21,7 +23,7 @@
                             </p>
                         </div>
                         <div class="img-box">
-                            <img src="/feane-1.0.0/images/client1.jpg" alt="" class="box-img">
+                            <img src="images/client1.jpg" alt="" class="box-img">
                         </div>
                     </div>
                 </div>
@@ -39,7 +41,7 @@
                             </p>
                         </div>
                         <div class="img-box">
-                            <img src="/feane-1.0.0/images/client2.jpg" alt="" class="box-img">
+                            <img src="images/client2.jpg" alt="" class="box-img">
                         </div>
                     </div>
                 </div>
@@ -48,41 +50,5 @@
     </div>
 </section>
 
-<!-- jQuery -->
-<script src="/feane-1.0.0/js/jquery-3.4.1.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<!-- Bootstrap JS -->
-<script src="/feane-1.0.0/js/bootstrap.js"></script>
-<!-- Owl Carousel -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- Isotope JS -->
-<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-<!-- Nice Select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-<!-- Custom JS -->
-<script src="/feane-1.0.0/js/custom.js"></script>
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap" async defer></script>
 
-<!-- Owl Carousel Initialization -->
-<script>
-    $(document).ready(function () {
-        $('.client_owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
-                }
-            }
-        });
-    });
-</script>
+
