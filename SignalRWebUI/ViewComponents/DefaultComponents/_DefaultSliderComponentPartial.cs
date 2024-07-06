@@ -4,6 +4,7 @@ using SignalRWebUI.Dtos.SliderDtos;
 
 namespace SignalRWebUI.ViewComponents.DefaultComponents
 {
+    //Consume İşlemi
     //Anasayfa Slider
     public class _DefaultSliderComponentPartial : ViewComponent
     {
