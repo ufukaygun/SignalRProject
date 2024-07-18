@@ -83,6 +83,9 @@ namespace SignalRApi
             builder.Services.AddScoped<ISliderService, SliderManager>();
             builder.Services.AddScoped<ISliderDAL, EfSliderDal>();
 
+            builder.Services.AddScoped<IBasketService, BasketManager>();
+            builder.Services.AddScoped<IBasketDal, EfBasketDal>();
+
 
             // Add services to the container.
 
