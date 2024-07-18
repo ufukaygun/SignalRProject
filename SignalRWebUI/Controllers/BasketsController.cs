@@ -18,7 +18,7 @@ namespace SignalRWebUI.Controllers
             //İstemci oluşturduk
             var client = _httpClientFactory.CreateClient();
             //GetAsync verileri listelemek için kullanılan metod
-            var responseMessage = await client.GetAsync("http://localhost:5205/api/Basket");
+            var responseMessage = await client.GetAsync("http://localhost:5205/api/Basket?id=4");
             if (responseMessage.IsSuccessStatusCode)
             {
                 //İşlem başarılı dönerse Json dan gelen içeriği string olarak oku
