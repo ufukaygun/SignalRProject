@@ -7,6 +7,7 @@ using SignalR.DataAccessLayer.EntityFramework;
 using SignalRApi.Hubs;
 using System.Reflection;
 using AutoMapper;
+using System.Text.Json.Serialization;
 
 namespace SignalRApi
 {
@@ -86,6 +87,11 @@ namespace SignalRApi
             builder.Services.AddScoped<IBasketService, BasketManager>();
             builder.Services.AddScoped<IBasketDal, EfBasketDal>();
 
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.WriteIndented = true;
+            }); 
 
             // Add services to the container.
 
