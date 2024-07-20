@@ -48,7 +48,7 @@ namespace SignalRWebUI.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-            ;
+            
         }
         public async Task<IActionResult> DeleteAbout(int id)
         {
