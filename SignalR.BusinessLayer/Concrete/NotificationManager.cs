@@ -33,6 +33,11 @@ namespace SignalR.BusinessLayer.Concrete
             return _notificationDal.GetAll();
         }
 
+        public List<Notification> TGetAllNotificationByFalse()
+        {
+            return _notificationDal.GetAllNotificationByFalse();
+        }
+
         public Notification TGetByID(int id)
         {
             return _notificationDal.GetByID(id);
