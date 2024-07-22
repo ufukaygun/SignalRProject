@@ -18,12 +18,30 @@
 		@*SetInterval Tetikleyici görevi görüyor*@
 						setInterval(() => {
 							connection.invoke("SendNotification");
-						}, 1000);
+						}, 5000);
 
 				}).catch((err) => { console.log(err) });
 
-			connection.on("ReceiveNotificationCountByStatusFalse", (value) => {
+			connection.on("ReceiveNotificationCountByFalse", (value) => {
 				$("#notificationcount").text(value);
+			});
+
+			connection.on("ReceiveNotificationListByFalse", (value) => {
+				console.log(value);
+				$("#notilist").empty();
+		@*Bildirimleri listeliyoruz.jQuery'deki append metodu, seçilen elementlerin sonuna yeni içerik eklemek için kullanılır.  append metodu ile belirli bir HTML içeriği #notilist ID'sine sahip elementin sonuna ekleniyor.*@
+				for (var i = 0; i < value.length; i++) {
+					$("#notilist").append(`<a href="#">
+					<div class="${value[i].type}"><i class="${value[i].icon}"></i></div>
+					<div class="notif-content">
+					<span class="block">
+					${value[i].description}
+					</span>
+					<span class="time">${value[i].date}</span>
+					</div>
+					</a>
+					`)
+				};
 			});
 			
 		});
@@ -33,7 +51,7 @@
 
 	<div class="logo-header">
 		<a href="index.html" class="logo">
-			SignalR Admin
+			U&U Restorant
 		</a>
 		<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -68,41 +86,15 @@
 				<li class="nav-item dropdown hidden-caret">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="la la-bell"></i>
-						<span class="notification" id="notificationcount">3</span>
+						<span class="notification" id="notificationcount"></span>
 					</a>
 					<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
 						<li>
-							<div class="dropdown-title">4 Yeni Bildirim Var</div>
+							<div class="dropdown-title">Yeni Bildirimleriniz Var</div>
 						</li>
 						<li>
 							<div class="notif-center">
-								<a href="#">
-									<div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											New user registered
-										</span>
-										<span class="time">5 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Rahmad commented on Admin
-										</span>
-										<span class="time">12 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Farrah liked Admin
-										</span>
-										<span class="time">17 minutes ago</span>
-									</div>
-								</a>
+								<div id="notilist"></div>
 							</div>
 						</li>
 						<li>
