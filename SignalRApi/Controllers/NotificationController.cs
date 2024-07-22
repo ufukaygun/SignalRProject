@@ -49,7 +49,7 @@ namespace SignalRApi.Controllers
             return Ok("Ekleme işlemi başarıyla yapıldı");
         }
         //Bildirimleri Silme
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteNotification(int id)
         {
             var value = _notificationService.TGetByID(id);
