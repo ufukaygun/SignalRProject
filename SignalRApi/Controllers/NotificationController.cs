@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.NotificationDto;
 using SignalR.EntityLayer.Entities;
+using System.Net.Http;
 
 namespace SignalRApi.Controllers
 {
@@ -11,8 +12,9 @@ namespace SignalRApi.Controllers
     public class NotificationController : ControllerBase
     {
         private readonly INotificationService _notificationService;
+		private object _httpClientFactory;
 
-        public NotificationController(INotificationService notificationService)
+		public NotificationController(INotificationService notificationService)
         {
             _notificationService = notificationService;
         }
@@ -92,7 +94,7 @@ namespace SignalRApi.Controllers
 			_notificationService.TNotificationStatusChangeToTrue(id);
 			return Ok("Güncelleme Yapıldı");
 		}
-
+		
 	}
 
 }
