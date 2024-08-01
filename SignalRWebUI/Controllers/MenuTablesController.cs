@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SignalRWebUI.Dtos.MenuTableDtos;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace SignalRWebUI.Controllers
@@ -89,7 +90,26 @@ namespace SignalRWebUI.Controllers
 				return RedirectToAction("Index");
 			}
 			return View();
+			
+		}
 
+		[HttpGet]
+		public async Task<IActionResult> TableListByStatus()
+		{
+			//İstemci oluşturduk
+			var client = _httpClientFactory.CreateClient();
+			//GetAsync verileri listelemek için kullanılan metod
+			var responseMessage = await client.GetAsync("http://localhost:5205/api/MenuTables");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				//İşlem başarılı dönerse Json dan gelen içeriği string olarak oku
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				//values değişkenin içerisini oku. DeserializeObject Json bir datayı çözüp normal metne çevirir. Listeleme
+				//SeriAlize da bir metni Json formatına çevirir. Ekle Güncelle
+				var values = JsonConvert.DeserializeObject<List<ResultMenuTableDto>>(jsonData);
+				return View(values);
+			}
+			return View();
 		}
 	}
 }
