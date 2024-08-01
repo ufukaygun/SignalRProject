@@ -109,5 +109,10 @@ namespace SignalRApi.Hubs
             var value = _menuTableService.TGetAll();
             await Clients.All.SendAsync("ReceiveMenuTableStatus", value);
         }
+        /* Bu metot, SendMessage çağrıldığında, belirtilen kullanıcı adı ve mesaj içeriğini alır ve tüm bağlı istemcilere ReceiveMessage olayı aracılığıyla iletir. Bu, gerçek zamanlı mesajlaşma uygulamalarında yaygın olarak kullanılan bir tekniktir. */
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
     }
 }
