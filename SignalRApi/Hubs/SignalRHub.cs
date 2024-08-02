@@ -28,7 +28,7 @@ namespace SignalRApi.Hubs
             _bookingService = bookingService;
             _notificationService = notificationService;
         }
-
+        public static int clientCount { get; set; } = 0;
         public async Task SendStatistic()
         {
             // Kategorilerin sayısını alıyoruz
@@ -113,6 +113,24 @@ namespace SignalRApi.Hubs
         public async Task SendMessage(string user, string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+
+        //Clienta bağlı olan client sayısını getiren metod
+        /* Bu kod, bir SignalR hub sınıfının iki metodunu tanımlar: OnConnectedAsync ve OnDisconnectedAsync. Bu metodlar, bir istemci bağlandığında veya bağlantısı kesildiğinde tetiklenir.  */
+        /* Bu metodlar, istemcilerin bağlanma ve bağlantı kesilme olaylarını takip ederek güncel istemci sayısını diğer tüm istemcilerle paylaşır. */
+        //Bir istemci hub'a bağlandığında tetiklenir.
+        public override async Task OnConnectedAsync()
+        {
+            clientCount++;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnConnectedAsync();
+        }
+        //Bir istemcinin hub'dan bağlantısı kesildiğinde tetiklenir.
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            clientCount--;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnDisconnectedAsync(exception);
         }
     }
 }
