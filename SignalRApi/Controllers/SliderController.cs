@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.DiscountDto;
-using SignalR.DtoLayer.FeatureDto;
 using SignalR.DtoLayer.SliderDto;
 using SignalR.EntityLayer.Entities;
 
@@ -25,7 +24,7 @@ namespace SignalRApi.Controllers
 		[HttpGet]
         public IActionResult SliderList()
         {
-            var value = _mapper.Map<List<ResultFeatureDto>>(_sliderService.TGetAll());
+            var value = _mapper.Map<List<ResultSliderDto>>(_sliderService.TGetAll());
             return Ok(value);
         }
         [HttpPost]
