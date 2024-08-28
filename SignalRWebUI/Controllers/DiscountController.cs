@@ -92,21 +92,24 @@ namespace SignalRWebUI.Controllers
 			return View();
 
 		}
-        public async Task<IActionResult> ChangeStatusTrue(int id)
-        {
-            //İstemci oluşturduk
-            var client = _httpClientFactory.CreateClient();
-            //GetAsync verileri listelemek için kullanılan metod
-            await client.GetAsync($"http://localhost:5205/api/ChangeStatusTrue/{id}");
-            return RedirectToAction("Index");
-        }
-        public async Task<IActionResult> ChangeStatusFalse(int id)
-        {
-            //İstemci oluşturduk
-            var client = _httpClientFactory.CreateClient();
-            //GetAsync verileri listelemek için kullanılan metod
-            await client.GetAsync($"http://localhost:5205/api/ChangeStatusFalse/{id}");
-            return RedirectToAction("Index");
-        }
-    }
+
+		public async Task<IActionResult> ChangeStatusTrue(int id)
+		{
+			
+				//İstemci oluşturduk
+				var client = _httpClientFactory.CreateClient();
+				//GetAsync verileri listelemek için kullanılan metod
+				await client.GetAsync($"http://localhost:5205/api/Discount/ChangeStatusTrue/{id}");
+				return RedirectToAction("Index");
+
+		}
+		public async Task<IActionResult> ChangeStatusFalse(int id)
+		{
+			//İstemci oluşturduk
+			var client = _httpClientFactory.CreateClient();
+			//GetAsync verileri listelemek için kullanılan metod
+			await client.GetAsync($"http://localhost:5205/api/Discount/ChangeStatusFalse/{id}");
+			return RedirectToAction("Index");
+		}
+	}
 }
