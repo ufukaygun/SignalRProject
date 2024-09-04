@@ -49,7 +49,12 @@ namespace SignalR.BusinessLayer.Concrete
             return _discountDAL.GetByID(id);
         }
 
-        public void TUpdate(Discount entity)
+		public List<Discount> TGetListByStatusTrue()
+		{
+            return _discountDAL.GetListByStatusTrue();
+		}
+
+		public void TUpdate(Discount entity)
         {
             _discountDAL.Update(entity);
         }

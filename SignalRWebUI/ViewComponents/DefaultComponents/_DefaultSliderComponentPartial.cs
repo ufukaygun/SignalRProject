@@ -21,7 +21,7 @@ namespace SignalRWebUI.ViewComponents.DefaultComponents
             //İstemci oluşturduk
             var client = _httpClientFactory.CreateClient();
             //GetAsync verileri listelemek için kullanılan metod
-            var responseMessage = await client.GetAsync("http://localhost:5205/api/Sliders");
+            var responseMessage = await client.GetAsync("http://localhost:5205/api/Slider");
             
                 //İşlem başarılı dönerse Json dan gelen içeriği string olarak oku
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
