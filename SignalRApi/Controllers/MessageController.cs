@@ -31,7 +31,7 @@ namespace SignalRApi.Controllers
 				MessageSendDate = DateTime.Now,
 				NameSurname = createMessageDto.NameSurname,
 				Phone = createMessageDto.Phone,
-				Status = createMessageDto.Status,
+				Status = false,
 				Subject = createMessageDto.Subject
 			};
 			_messageService.TAdd(message);

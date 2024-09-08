@@ -90,7 +90,10 @@ namespace SignalRApi
             builder.Services.AddScoped<INotificationService, NotificationManager>();
             builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
 
-            builder.Services.AddControllers().AddJsonOptions(options =>
+			builder.Services.AddScoped<IMessageService, MessageMenager>();
+			builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+
+			builder.Services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 options.JsonSerializerOptions.WriteIndented = true;
