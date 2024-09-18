@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DtoLayer.BasketDto;
-using SignalR.DtoLayer.BookingDto;
 using SignalR.EntityLayer.Entities;
 using SignalRApi.Models;
 
 namespace SignalRApi.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
     [ApiController]
     public class BasketController : ControllerBase
     {
