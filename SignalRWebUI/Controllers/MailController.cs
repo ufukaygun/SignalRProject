@@ -19,7 +19,7 @@ namespace SignalRWebUI.Controllers
 			MimeMessage mimeMessage = new MimeMessage();
 
 			//MailboxAddress sınıfından nesne örneği alındı From ifadesi mailin kimden gideceğini gösterir
-			MailboxAddress mailboxAddressFrom = new MailboxAddress("SignalR Rezervasyon", "mail adresi");
+			MailboxAddress mailboxAddressFrom = new MailboxAddress("SignalR Rezervasyon", "u.aygun869@gmail.com");
 			mimeMessage.From.Add(mailboxAddressFrom);
 
 			//mailboxAddressTo buda mailin kime gideceği
@@ -36,7 +36,7 @@ namespace SignalRWebUI.Controllers
 			//Şifreleme
 			SmtpClient client = new SmtpClient();
 			client.Connect("smtp.gmail.com", 587, false);
-			client.Authenticate("mail adresi", "key");
+			client.Authenticate("u.aygun869@gmail.com", "dxyc motg oyvq fzza");
 
 			client.Send(mimeMessage);
 			client.Disconnect(true);
